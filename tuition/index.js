@@ -4,7 +4,7 @@ const { streamData } = require('../util');
 const { endPoints: { product: { tuition } } } = require('../constants');
 
 
-module.exports = ({ sessionIds }) => {
-  if (!sessionIds) return hl.fromError(new Error('SessionIds is required'));
-  return streamData({ sessionIds }, tuition);
+module.exports = ({ tuitionIds }) => {
+  if (!tuitionIds) return hl.fromError(new Error('tuitionIds is required'));
+  return streamData({ tuitionIds }, tuition);
 };

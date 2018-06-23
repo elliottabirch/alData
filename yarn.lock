@@ -175,6 +175,10 @@ mime-types@^2.1.12, mime-types@~2.1.17:
   dependencies:
     mime-db "~1.33.0"
 
+moment@^2.22.2:
+  version "2.22.2"
+  resolved "http://npm.ooapi.com:4873/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
+
 oauth-sign@~0.8.2:
   version "0.8.2"
   resolved "http://npm.ooapi.com:4873/oauth-sign/-/oauth-sign-0.8.2.tgz#46a6ab7f0aead8deae9ec0565780b7d4efeb9d43"
