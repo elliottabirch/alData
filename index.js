@@ -23,7 +23,7 @@ const functionMap = {
 };
 
 exports.handler = (event, context, cb) => {
-  const { queryStringParameters } = event;
+  const { queryStringParameters = {} } = event;
   const { functionName } = context;
   functionMap[functionName](queryStringParameters)
     .stopOnError(err => cb(null, { statusCode: '400', body: err.message, headers: { 'Content-Type': 'application/json' } }))
