@@ -19,9 +19,7 @@ const streamData = (query, endPoint) => {
     uri: createUrl(base, endPoint),
     body,
     json: true,
-  }))
-    .through(parseBuffer)
-    .flatten();
+  }));
 };
 
 module.exports = {
