@@ -19,7 +19,9 @@ const streamData = (query, endPoint) => {
     uri: createUrl(base, endPoint),
     body,
     json: true,
-  }));
+  }))
+    .pluck('body')
+    .flatten();
 };
 
 module.exports = {

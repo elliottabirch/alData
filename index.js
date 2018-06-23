@@ -27,8 +27,5 @@ exports.handler = (event, context, cb) => {
   const { functionName } = context;
   functionMap[functionName](queryStringParameters)
     .stopOnError(err => cb(null, { statusCode: '400', body: err.message, headers: { 'Content-Type': 'application/json' } }))
-    .through(parseBuffer)
-    .flatten()
-    .stopOnError(err => cb(null, { statusCode: '400', body: err.message, headers: { 'Content-Type': 'application/json' } }))
     .toArray(data => cb(null, { statusCode: '200', body: { data }, headers: { 'Content-Type': 'application/json' } }));
 };
