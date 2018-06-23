@@ -9,8 +9,6 @@ const session = require('./session');
 const sessionOption = require('./sessionOption');
 const tuition = require('./tuition');
 
-const { parseBuffer } = require('./util');
-
 const functionMap = {
   person,
   answer,
@@ -23,9 +21,9 @@ const functionMap = {
 };
 
 exports.handler = (event, context, cb) => {
-  const { queryStringParameters = {} } = event;
+  const { queryStringParameters } = event;
   const { functionName } = context;
-  functionMap[functionName](queryStringParameters)
+  functionMap[functionName](queryStringParameters || {})
     .stopOnError(err => cb(null, { statusCode: '400', body: JSON.stringify(err.message), headers: { 'Content-Type': 'application/json' } }))
     .toArray(data => cb(null, { statusCode: '200', body: JSON.stringify({ data }), headers: { 'Content-Type': 'application/json' } }));
 };
