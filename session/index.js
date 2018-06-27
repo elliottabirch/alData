@@ -5,6 +5,6 @@ const { endPoints: { product: { session } } } = require('../constants');
 
 
 module.exports = ({ sessionIds }) => {
-  if (!sessionIds) return hl.fromError(new Error('SessionIds is required'));
+  if (!sessionIds) return hl.fromError(new Error('sessionIds is required'));
   return streamData({ sessionIds }, session);
 };

@@ -23,7 +23,7 @@ const functionMap = {
 exports.handler = (event, context, cb) => {
   const { queryStringParameters, body } = event;
   const { functionName } = context;
-  functionMap[functionName](queryStringParameters || body || {})
+  functionMap[functionName](queryStringParameters || (body && JSON.parse(body)) || {})
     .stopOnError(err => cb(null, { statusCode: '400', body: JSON.stringify(err.message), headers: { 'Content-Type': 'application/json' } }))
     .toArray(data => cb(null, { statusCode: '200', body: JSON.stringify({ data }), headers: { 'Content-Type': 'application/json' } }));
 };
